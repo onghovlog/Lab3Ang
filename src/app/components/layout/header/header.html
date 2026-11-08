@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="header-top">
+    <a routerLink="/" class="logo">
+      🌼 BH<span>Shop</span>
+    </a>
+    <a routerLink="/cart" class="cart" aria-label="Giỏ hàng">
+      🛒
+    </a>
+  </div>
+
+  <form class="search" action="#" (submit)="$event.preventDefault()">
+    <input type="search" placeholder="Tìm bó hoa bạn yêu thích...">
+  </form>
+</header>
+
+<nav class="nav">
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    Trang chủ
+  </a>
+
+  <a
+    routerLink="/products"
+    routerLinkActive="active">
+    Sản phẩm
+  </a>
+
+  <a
+    routerLink="/cart"
+    routerLinkActive="active">
+    Giỏ hàng
+  </a>
+</nav>

@@ -1,0 +1,147 @@
+<!-- HERO SLIDER -->
+<section class="slider">
+  <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=900&auto=format&fit=crop" alt="Hoa tươi rực rỡ">
+
+  <div class="slider-content">
+    <h1>Trao hoa tươi, gửi yêu thương</h1>
+    <p>Ưu đãi đặc biệt đến 30%</p>
+    <a routerLink="/products" class="btn-white">
+      Khám phá ngay →
+    </a>
+  </div>
+
+  <div class="slider-dots">● ○ ○</div>
+</section>
+
+<!-- SAN PHAM MOI -->
+<section class="section" id="new">
+  <div class="section-heading">
+    <h2>🌷 Hoa tươi mới</h2>
+    <a routerLink="/products">Xem tất cả →</a>
+  </div>
+  <p class="subtitle">
+    Những bó hoa xinh xắn vừa cập bến
+  </p>
+
+  <div class="product-grid">
+    @for (product of newProducts(); track product.id) {
+    <article class="product-card">
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.name">
+        <span class="label {{ product.badgeClass }}">{{ product.badge }}</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <div class="price">{{ product.price }}</div>
+        <div class="old-price">{{ product.oldPrice }}</div>
+        <div class="product-actions">
+          <a routerLink="/cart" class="btn-buy"> Mua</a>
+          <a [routerLink]="['/product', product.id]" class="btn-detail">Chi tiết</a>
+        </div>
+      </div>
+    </article>
+    }
+  </div>
+</section>
+
+<!-- BANNER 1 -->
+<aside class="promo-banner">
+  <img src="https://images.unsplash.com/photo-1494336934272-f0efcedfc8a9?w=900&auto=format&fit=crop"
+    alt="Ưu đãi hoa tươi">
+  <div class="promo-content">
+    <h3>Một bó hoa, ngàn lời yêu</h3>
+    <p>Miễn phí thiệp chúc mừng</p>
+    <a routerLink="/products" class="btn-white">
+      Mua ngay →
+    </a>
+  </div>
+</aside>
+
+<!-- SAN PHAM KHUYEN MAI -->
+<section class="section" id="sale">
+  <div class="section-heading">
+    <h2>🔥 Ưu đãi hôm nay</h2>
+    <a routerLink="/products">Xem tất cả →</a>
+  </div>
+  <p class="subtitle">
+    Hoa đẹp giá tốt, số lượng có hạn
+  </p>
+
+
+  <div class="product-grid">
+    @for (product of saleProducts(); track product.id) {
+    <article class="product-card">
+
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.name">
+
+        @if (product.discount > 0) {
+        <span class="label label-sale">
+          -{{ product.discount }}%
+        </span>
+        }
+      </div>
+
+      <div class="product-info">
+        <h3 class="product-name">
+          {{ product.name }}
+        </h3>
+
+        <div class="price">
+          {{ product.price }}
+        </div>
+
+        @if (product.discount > 0) {
+        <div class="old-price">
+          {{ product.oldPrice }}
+        </div>
+        }
+
+        <div class="product-actions">
+          <a routerLink="/cart" class="btn-buy">
+            Mua
+          </a>
+
+          <a [routerLink]="['/product', product.id]" class="btn-detail">
+            Chi tiết
+          </a>
+        </div>
+      </div>
+
+    </article>
+    } @empty {
+    <p>Hiện chưa có sản phẩm khuyến mãi.</p>
+    }
+  </div>
+
+
+</section>
+
+<!-- BANNER 2 -->
+<aside class="promo-banner">
+  <img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=900&auto=format&fit=crop"
+    alt="Dịch vụ giao hoa">
+  <div class="promo-content">
+    <h3>Hoa tươi trao tận tay</h3>
+    <p>Giao nhanh, gói hoa chỉn chu</p>
+    <a routerLink="/products" class="btn-white">
+      Liên hệ ngay →
+    </a>
+  </div>
+</aside>
+
+<!-- CAM KET -->
+<section class="features">
+  <div class="feature">
+    <span>🌸</span>
+    Hoa tươi<br>mỗi ngày
+  </div>
+  <div class="feature">
+    <span>🚚</span>
+    Giao hoa<br>tận nơi
+  </div>
+  <div class="feature">
+    <span>🎁</span>
+    Gói quà<br>tinh tế
+  </div>
+</section>

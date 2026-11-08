@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Orange Bloom - Tiệm Hoa Tươi</title>
+
+  <style>
+    :root {
+      --orange: #f97316;
+      --orange-dark: #c2410c;
+      --orange-light: #fff0e5;
+      --cream: #fffaf5;
+      --text: #292524;
+      --muted: #78716c;
+      --border: #f1e5dc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e8e8e8;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .website {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--cream);
+      box-shadow: 0 0 25px #00000012;
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    /* HEADER */
+    .header {
+      background: white;
+      padding: 15px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #44403c;
+    }
+
+    .cart {
+      font-size: 22px;
+      background: var(--orange-light);
+      border-radius: 12px;
+      padding: 9px;
+    }
+
+    .search {
+      margin-top: 14px;
+    }
+
+    .search input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fafafa;
+      padding: 13px;
+      outline-color: var(--orange);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      background: var(--orange);
+      padding: 13px 4px;
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* SLIDER TINH */
+    .slider {
+      position: relative;
+      margin: 14px;
+      overflow: hidden;
+      border-radius: 17px;
+      background: #fed7aa;
+    }
+
+    .slider img {
+      height: 215px;
+      object-fit: cover;
+    }
+
+    .slider-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      background: linear-gradient(
+        90deg,
+        rgba(67, 32, 15, .75),
+        transparent
+      );
+      color: white;
+    }
+
+    .slider-content h1 {
+      font-size: 27px;
+      max-width: 230px;
+      margin: 0 0 10px;
+    }
+
+    .slider-content p {
+      font-size: 13px;
+      margin: 0 0 15px;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--orange-dark);
+      border-radius: 30px;
+      padding: 10px 15px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      color: white;
+      letter-spacing: 4px;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 18px 14px 22px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-heading h2 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .section-heading a {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin: -7px 0 15px;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px #00000006;
+    }
+
+    .product-image {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: #fff0e5;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .label {
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      padding: 6px 9px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .label-new {
+      background: #16a34a;
+    }
+
+    .label-sale {
+      background: #ef4444;
+    }
+
+    .product-info {
+      padding: 11px;
+    }
+
+    .product-name {
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 1.5;
+      height: 39px;
+      margin: 0 0 7px;
+      overflow: hidden;
+    }
+
+    .price {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--orange-dark);
+    }
+
+    .old-price {
+      font-size: 11px;
+      color: #a8a29e;
+      text-decoration: line-through;
+      margin-top: 4px;
+      min-height: 13px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .btn-buy, .btn-detail {
+      text-align: center;
+      border-radius: 8px;
+      padding: 10px 4px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .btn-buy {
+      flex: 1;
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-detail {
+      flex: 1;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      background: white;
+    }
+
+    /* BANNER QUANG CAO */
+    .promo-banner {
+      position: relative;
+      margin: 5px 14px 14px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fb923c;
+    }
+
+    .promo-banner img {
+      height: 145px;
+      object-fit: cover;
+    }
+
+    .promo-content {
+      position: absolute;
+      inset: 0;
+      padding: 17px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      color: white;
+      background: linear-gradient(
+        90deg,
+        rgba(124, 45, 18, .85),
+        transparent
+      );
+    }
+
+    .promo-content h3 {
+      font-size: 19px;
+      max-width: 210px;
+      margin: 0 0 8px;
+    }
+
+    .promo-content p {
+      font-size: 12px;
+      margin: 0 0 12px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 20px 14px;
+      background: #fff1e6;
+      text-align: center;
+    }
+
+    .feature {
+      font-size: 11px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    .feature span {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #431f13;
+      color: white;
+      padding: 25px 18px;
+    }
+
+    .footer h3 {
+      color: #fdba74;
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .footer p {
+      color: #f5ded2;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      font-size: 12px;
+    }
+
+    .copyright {
+      border-top: 1px solid #ffffff30;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 11px;
+      color: #d6b7a8;
+    }
+
+    @media (max-width: 350px) {
+      .product-actions {
+        flex-direction: column;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="website">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="logo">
+        🌼 Orange<span>Bloom</span>
+      </a>
+      <a href="#" class="cart" aria-label="Giỏ hàng">
+        🛒
+      </a>
+    </div>
+
+    <form class="search" action="#">
+      <input type="search"
+             placeholder="Tìm bó hoa bạn yêu thích...">
+    </form>
+  </header>
+
+  <nav class="nav">
+    <a href="#">Trang chủ</a>
+    <a href="#new">Hoa mới</a>
+    <a href="#sale">Khuyến mãi</a>
+    <a href="#contact">Liên hệ</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO SLIDER -->
+    <section class="slider">
+      <img
+        src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=900&auto=format&fit=crop"
+        alt="Hoa tươi rực rỡ">
+
+      <div class="slider-content">
+        <h1>Trao hoa tươi, gửi yêu thương</h1>
+        <p>Ưu đãi đặc biệt đến 30%</p>
+        <a href="#sale" class="btn-white">
+          Khám phá ngay
+        </a>
+      </div>
+
+      <div class="slider-dots">● ○ ○</div>
+    </section>
+
+    <!-- SAN PHAM MOI -->
+    <section class="section" id="new">
+      <div class="section-heading">
+        <h2>🌷 Hoa tươi mới</h2>
+        <a href="#">Xem tất cả →</a>
+      </div>
+      <p class="subtitle">
+        Những bó hoa xinh xắn vừa cập bến
+      </p>
+
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=500&auto=format&fit=crop"
+                 alt="Hoa hồng pastel">
+            <span class="label label-new">NEW</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Bó hoa hồng Pastel</h3>
+            <div class="price">350.000đ</div>
+            <div class="old-price">&nbsp;</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&auto=format&fit=crop"
+                 alt="Hoa đồng nội">
+            <span class="label label-new">NEW</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Bó hoa Đồng Nội</h3>
+            <div class="price">290.000đ</div>
+            <div class="old-price">&nbsp;</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=500&auto=format&fit=crop"
+                 alt="Hoa tình yêu">
+            <span class="label label-new">NEW</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Hoa Tình Yêu Ngọt Ngào</h3>
+            <div class="price">420.000đ</div>
+            <div class="old-price">&nbsp;</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=500&auto=format&fit=crop"
+                 alt="Hoa thanh xuân">
+            <span class="label label-new">NEW</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Giỏ Hoa Thanh Xuân</h3>
+            <div class="price">390.000đ</div>
+            <div class="old-price">&nbsp;</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BANNER 1 -->
+    <aside class="promo-banner">
+      <img
+        src="https://images.unsplash.com/photo-1494336934272-f0efcedfc8a9?w=900&auto=format&fit=crop"
+        alt="Ưu đãi hoa tươi">
+      <div class="promo-content">
+        <h3>Một bó hoa, ngàn lời yêu</h3>
+        <p>Miễn phí thiệp chúc mừng</p>
+        <a href="#sale" class="btn-white">
+          Mua ngay →
+        </a>
+      </div>
+    </aside>
+
+    <!-- SAN PHAM KHUYEN MAI -->
+    <section class="section" id="sale">
+      <div class="section-heading">
+        <h2>🔥 Ưu đãi hôm nay</h2>
+        <a href="#">Xem tất cả →</a>
+      </div>
+      <p class="subtitle">
+        Hoa đẹp giá tốt, số lượng có hạn
+      </p>
+
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=500&auto=format&fit=crop"
+                 alt="Hoa hồng đỏ">
+            <span class="label label-sale">-20%</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Bó Hồng Đỏ Nồng Nàn</h3>
+            <div class="price">320.000đ</div>
+            <div class="old-price">400.000đ</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=500&auto=format&fit=crop"
+                 alt="Hoa sắc màu">
+            <span class="label label-sale">-25%</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Hoa Sắc Màu Rực Rỡ</h3>
+            <div class="price">300.000đ</div>
+            <div class="old-price">400.000đ</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=500&auto=format&fit=crop"
+                 alt="Hoa dịu dàng">
+            <span class="label label-sale">-15%</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Bó Hoa Dịu Dàng</h3>
+            <div class="price">255.000đ</div>
+            <div class="old-price">300.000đ</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&auto=format&fit=crop"
+                 alt="Hoa ngọt ngào">
+            <span class="label label-sale">-30%</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Giỏ Hoa Ngọt Ngào</h3>
+            <div class="price">350.000đ</div>
+            <div class="old-price">500.000đ</div>
+            <div class="product-actions">
+              <a href="#" class="btn-buy">🛒 Đặt mua</a>
+              <a href="#" class="btn-detail">Chi tiết</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BANNER 2 -->
+    <aside class="promo-banner">
+      <img
+        src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=900&auto=format&fit=crop"
+        alt="Dịch vụ giao hoa">
+      <div class="promo-content">
+        <h3>Hoa tươi trao tận tay</h3>
+        <p>Giao nhanh, gói hoa chỉn chu</p>
+        <a href="#contact" class="btn-white">
+          Liên hệ ngay →
+        </a>
+      </div>
+    </aside>
+
+    <!-- CAM KET -->
+    <section class="features">
+      <div class="feature">
+        <span>🌸</span>
+        Hoa tươi<br>mỗi ngày
+      </div>
+      <div class="feature">
+        <span>🚚</span>
+        Giao hoa<br>tận nơi
+      </div>
+      <div class="feature">
+        <span>🎁</span>
+        Gói quà<br>tinh tế
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <h3>🌼 Orange Bloom</h3>
+    <p>
+      Gửi trao yêu thương qua từng đóa hoa.
+      Chúng tôi mang đến những bó hoa tươi đẹp
+      cho mọi khoảnh khắc đáng nhớ.
+    </p>
+    <p>
+      📍 TP. Hồ Chí Minh<br>
+      ☎ Hotline: 0900 000 000<br>
+      ✉ Email: hello@orangebloom.vn
+    </p>
+
+    <div class="footer-links">
+      <a href="#">Giới thiệu</a>
+      <a href="#">Chính sách</a>
+      <a href="#">Hướng dẫn mua hàng</a>
+    </div>
+
+    <div class="copyright">
+      © 2026 Orange Bloom. All rights reserved.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

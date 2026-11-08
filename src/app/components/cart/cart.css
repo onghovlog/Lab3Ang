@@ -1,0 +1,132 @@
+.breadcrumb {
+  padding: 14px 14px 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.breadcrumb a {
+  color: var(--orange-dark);
+  font-weight: 600;
+}
+
+.breadcrumb span {
+  color: var(--muted);
+}
+
+.cart-container {
+  padding: 10px 14px 25px;
+}
+
+.cart-container h2 {
+  font-size: 20px;
+  margin: 0 0 16px;
+  color: var(--text);
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.cart-item img {
+  width: 75px;
+  height: 75px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item-info h3 {
+  font-size: 14px;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.item-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--orange-dark);
+  margin-bottom: 4px;
+}
+
+.quantity-control {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cart-summary {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.cart-summary .row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #57534e;
+}
+
+.cart-summary .free {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 800;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  margin-top: 10px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.total-price {
+  color: var(--orange-dark);
+}
+
+.btn-checkout {
+  width: 100%;
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-checkout:hover {
+  opacity: 0.95;
+}
+
+.btn-continue {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: var(--orange);
+  font-weight: bold;
+  margin-top: 14px;
+  text-decoration: none;
+}
+
